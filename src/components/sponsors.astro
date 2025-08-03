@@ -1,0 +1,210 @@
+---
+interface Sponsor {
+  name: string
+  logo: string
+  website?: string
+  tier?: 'platinum' | 'gold' | 'silver' | 'bronze'
+}
+
+interface Company {
+  name: string
+  logo: string
+  website?: string
+}
+
+const sponsors: Sponsor[] = [
+    {
+        name: "Cloud IAM",
+        logo: "/sponsors/cloudiam.png",
+        website: "https://cloud-iam.com",
+        tier: "platinum"
+    },
+    {
+        name: "Nudibranches Technologies",
+        logo: "/sponsors/nudibranches.svg",
+        website: "https://nudibranches.tech",
+        tier: "gold"
+    },
+];
+
+const trustedCompanies: Company[] = [
+    {
+      name: "Mineral",
+      logo: "/sponsors/mineral.png",
+      website: "https://mineral-foundation.org/"
+    }
+];
+---
+
+
+<section class="relative px-4 py-16 sm:px-6 sm:py-20 md:py-24">
+    <div class="mx-auto w-full max-w-(--breakpoint-sm) md:max-w-[1100px]">
+
+        <!-- Sponsors Section -->
+        <div class="mb-16 md:mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-semibold text-black dark:text-white mb-4">
+                    Proudly Sponsored By
+                </h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Supporting the future of open-source identity and access management
+                </p>
+            </div>
+
+            <!-- Sponsor Tiers -->
+            <div class="space-y-12">
+                <!-- Platinum Sponsors -->
+                <div class="text-center">
+                    <h3 class="text-sm font-medium text-orange-600 dark:text-orange-400 mb-6 uppercase tracking-wider">
+                        Platinum Sponsors
+                    </h3>
+                    <div class="flex justify-center">
+                        {sponsors.filter(s => s.tier === 'platinum').map(sponsor => (
+                            <a
+                                href={sponsor.website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="group default-border-color rounded-sm border p-6 bg-white/60  shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] transform-all relative overflow-clip duration-75 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)] transition-all"
+                                aria-label={`Visit ${sponsor.name} website`}
+                            >
+                                <img
+                                    src={sponsor.logo}
+                                    alt={`${sponsor.name} logo`}
+                                    class="h-16 md:h-20 w-auto mx-auto filter transition-all duration-300"
+                                />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+
+                <!-- Gold & Silver Sponsors -->
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Gold Sponsors -->
+                    <div class="text-center">
+                        <h3 class="text-sm font-medium text-yellow-600 dark:text-yellow-400 mb-6 uppercase tracking-wider">
+                            Gold Sponsors
+                        </h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            {sponsors.filter(s => s.tier === 'gold').map(sponsor => (
+                                <a
+                                    href={sponsor.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group default-border-color rounded-sm border p-4 bg-white/60 dark:bg-offgray-800/8 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 transition-all"
+                                    aria-label={`Visit ${sponsor.name} website`}
+                                >
+                                    <img
+                                        src={sponsor.logo}
+                                        alt={`${sponsor.name} logo`}
+                                        class="h-10 md:h-12 w-auto mx-auto transition-all duration-300"
+                                    />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    <!-- Silver Sponsors -->
+                    <div class="text-center">
+                        <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-6 uppercase tracking-wider">
+                            Silver Sponsors
+                        </h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            {sponsors.filter(s => s.tier === 'silver').map(sponsor => (
+                                <a
+                                    href={sponsor.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group default-border-color rounded-sm border p-4 bg-white/60 dark:bg-offgray-800/8 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 transition-all"
+                                    aria-label={`Visit ${sponsor.name} website`}
+                                >
+                                    <img
+                                        src={sponsor.logo}
+                                        alt={`${sponsor.name} logo`}
+                                        class="h-8 md:h-10 w-auto mx-auto filter transition-all duration-300"
+                                    />
+                                </a>
+                            ))}
+                            {sponsors.filter(s => s.tier === 'silver').length == 0 && (
+                                <div class="text-center text-gray-500 dark:text-gray-400">
+                                    No sponsors at this tier yet.
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Separator -->
+        <section class="flex items-center justify-center my-16">
+            <hr class="grid-border-color w-full border-t">
+        </section>
+
+        <!-- Trusted Companies Section -->
+        <div>
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-semibold text-black dark:text-white mb-4">
+                    Trusted by
+                </h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Join thousands of companies that rely on Ferriskey for their identity management needs
+                </p>
+            </div>
+
+            <!-- Companies Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
+                {trustedCompanies.map(company => (
+                    <a
+                        href={company.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center justify-center p-4 default-border-color rounded-sm border bg-white/60 dark:bg-offgray-800/8 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 transition-all duration-200"
+                        aria-label={`Visit ${company.name} website`}
+                    >
+                        <img
+                            src={company.logo}
+                            alt={`${company.name} logo`}
+                            class="h-8 w-auto mx-auto opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                        />
+                    </a>
+                ))}
+            </div>
+        </div>
+
+        <!-- Call to Action for Sponsorship -->
+        <div class="mt-16 text-center">
+            <div class="default-border-color rounded-sm border p-8 bg-gradient-to-r from-orange-50/50 to-blue-50/50 dark:from-orange-900/10 dark:to-blue-900/10">
+                <h3 class="text-lg font-semibold text-black dark:text-white mb-3">
+                    Interested in Sponsoring?
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">
+                    Support the development of Ferriskey and get your brand in front of thousands of developers
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a
+                        href="https://github.com/sponsors/ferriskey"
+                        class="group select-none text-sm tracking-tight rounded-sm flex gap-1.5 items-center justify-center text-nowrap border transition-colors duration-75 fv-style disabled:opacity-50 disabled:cursor-not-allowed bg-orange-500 border-transparent text-white [box-shadow:hsl(25,_85%,_35%)_0_-2px_0_0_inset,_hsl(35,_90%,_85%)_0_1px_3px_0] dark:[box-shadow:hsl(25,_85%,_35%)_0_-2px_0_0_inset,_hsl(0,_0%,_0%,_0.4)_0_1px_3px_0] hover:bg-orange-600 active:[box-shadow:none] hover:[box-shadow:none] dark:hover:[box-shadow:none] h-9 px-4"
+                    >
+                        Become a Sponsor
+                    </a>
+                    <a
+                        href="mailto:sponsors@pro.nathaelbonnal@gmail.com"
+                        class="group select-none text-sm tracking-tight rounded-sm flex gap-1.5 items-center justify-center text-nowrap border transition-colors duration-75 fv-style disabled:opacity-50 disabled:cursor-not-allowed text-black dark:text-offgray-50 border-offgray-200/50 dark:border-offgray-400/20 bg-offgray-50/60 dark:bg-offgray-300/5 hover:bg-offgray-100/50 dark:hover:bg-offgray-200/10 [box-shadow:hsl(218,_13%,_50%,_0.1)_0_-2px_0_0_inset] dark:[box-shadow:hsl(218,_13%,_70%,_0.08)_0_-2px_0_0_inset] hover:[box-shadow:none] dark:hover:[box-shadow:none] h-9 px-4"
+                    >
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background pattern -->
+    <svg aria-hidden="true" class="pointer-events-none absolute inset-0 [z-index:-1] size-full fill-blue-500/20 stroke-blue-500/20 [mask-image:linear-gradient(to_bottom,_transparent,_#ffffffad,_transparent)] opacity-[.15]" style="visibility: visible;">
+        <defs>
+            <pattern id="sponsor-pattern" width="40" height="40" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                <path d="M.5 40V.5H40" fill="none" stroke-dasharray="0"></path>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" stroke-width="0" fill="url(#sponsor-pattern)"></rect>
+    </svg>
+</section>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
+    <defs>
+        <linearGradient id="rustGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#58a6ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#4493e8;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <!-- Crab body -->
+    <ellipse cx="64" cy="70" rx="24" ry="18" fill="url(#rustGradient)"/>
+
+    <!-- Crab claws -->
+    <ellipse cx="38" cy="55" rx="8" ry="12" fill="url(#rustGradient)" transform="rotate(-30 38 55)"/>
+    <ellipse cx="90" cy="55" rx="8" ry="12" fill="url(#rustGradient)" transform="rotate(30 90 55)"/>
+
+    <!-- Claw tips -->
+    <ellipse cx="32" cy="48" rx="4" ry="6" fill="url(#rustGradient)" transform="rotate(-45 32 48)"/>
+    <ellipse cx="96" cy="48" rx="4" ry="6" fill="url(#rustGradient)" transform="rotate(45 96 48)"/>
+
+    <!-- Crab legs -->
+    <rect x="45" y="82" width="3" height="12" fill="url(#rustGradient)" transform="rotate(-15 45 82)"/>
+    <rect x="50" y="84" width="3" height="14" fill="url(#rustGradient)" transform="rotate(-5 50 84)"/>
+    <rect x="75" y="84" width="3" height="14" fill="url(#rustGradient)" transform="rotate(5 75 84)"/>
+    <rect x="80" y="82" width="3" height="12" fill="url(#rustGradient)" transform="rotate(15 80 82)"/>
+
+    <!-- Eyes -->
+    <circle cx="58" cy="62" r="3" fill="#f0f6fc"/>
+    <circle cx="70" cy="62" r="3" fill="#f0f6fc"/>
+    <circle cx="58" cy="61" r="1.5" fill="#0d1117"/>
+    <circle cx="70" cy="61" r="1.5" fill="#0d1117"/>
+
+    <!-- Key symbol on shell -->
+    <g transform="translate(64,72) scale(0.8)">
+        <rect x="-8" y="-3" width="12" height="2" fill="#f0f6fc" rx="1"/>
+        <circle cx="6" cy="-2" r="4" fill="none" stroke="#f0f6fc" stroke-width="2"/>
+        <rect x="4" y="-4" width="2" height="2" fill="#f0f6fc"/>
+        <rect x="4" y="-1" width="2" height="2" fill="#f0f6fc"/>
+    </g>
+
+    <!-- Background circle for contrast -->
+    <circle cx="64" cy="64" r="58" fill="none" stroke="url(#rustGradient)" stroke-width="2" opacity="0.3"/>
+
+    <style>
+        @media (prefers-color-scheme: light) {
+            circle[stroke] { stroke: #4493e8; }
+        }
+    </style>
+</svg>

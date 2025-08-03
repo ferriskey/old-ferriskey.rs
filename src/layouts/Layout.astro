@@ -1,0 +1,33 @@
+---
+import '../styles/global.css'
+
+import Navbar from '../components/ui/navbar.jsx';
+---
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/astro.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Ferriskey - IAM moderne écrit en Rust</title>
+		<meta name="description" content="Ferriskey est une solution IAM (Identity and Access Management) moderne, sécurisée et performante, développée en Rust." />
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+	</head>
+	<body>
+
+    	<div class="relative flex min-h-screen flex-none flex-col justify-between">
+
+    	    <Navbar client:load  />
+    		<slot />
+    	</div>
+
+	</body>
+</html>

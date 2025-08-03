@@ -1,0 +1,20 @@
+ ---
+ import { KeyRound } from '@lucide/astro'
+ ---
+
+ <a
+     class="relative w-full px-2 py-2 md:px-16 group flex items-center border-b border-color border-orange-200/50 hover:border-solid bg-linear-to-r from-transparent via-orange-100 to-orange-50 hover:bg-orange-50 "
+     href="/products/trident"
+ >
+     <div class="relative mx-auto flex max-w-(--breakpoint-sm) items-center gap-4 md:max-w-[1100px]">
+         <div class="flex items-center gap-1">
+             <KeyRound class='w-4 text-orange-400' />
+             <span class="text-orange-400 text-sm dark:text-blue-100">
+                 Introducing:<!-- --> <span class="font-lora font-semibold tracking-wide">Trident</span> <!-- -->→
+             </span>
+         </div>
+     </div>
+
+     <div class="absolute z-10 size-2 rotate-45 rounded-[1px] border border-orange-200 dark:border-orange-300/25 bg-white dark:bg-black bottom-[-4.5px] left-[-4.5px]"></div>
+     <div class="absolute z-10 size-2 rotate-45 rounded-[1px] border border-orange-200 dark:border-orange-300/25 bg-white dark:bg-black right-[-4.5px] bottom-[-4.5px]"></div>
+ </a>
