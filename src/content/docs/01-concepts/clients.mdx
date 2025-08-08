@@ -20,6 +20,7 @@ A client is an entity (such as a web app, API, or service) that needs to authent
 - **Per-Realm Registration**: Clients are registered within a specific realm, ensuring isolation.
 - **Protocol Support**: Supports OAuth2, OpenID Connect, and other standard protocols.
 
+
 ## Use Cases
 
 ### Application Authentication
@@ -80,3 +81,40 @@ CREATE TABLE roles (
 - Redirect URI Validation: Always specify and validate redirect URIs to prevent misuse.
 - Audit Logging: All client authentication and authorization events are logged for compliance.
 
+
+## Create Client
+
+To create a new client in FerrisKey, you can use either the web interface or the API. Each client requires a unique name, client ID, and will be registered within a specific realm.
+
+### Using the Web Interface
+
+1. Navigate to your realm's client management section
+2. Click "Create Client" or the "+" button
+3. Fill in the required fields:
+   - **Client Name**: A descriptive name for your application
+   - **Client ID**: A unique identifier (auto-generated if left blank)
+   - **Redirect URIs**: Valid redirect URLs for OAuth flows
+   - **Client Type**: Choose between public or confidential client
+4. Configure additional settings as needed
+5. Click "Create" to register the client
+
+![Client Create](/docs/client_create.png)
+
+### Using the API
+
+```bash
+curl -X POST "https://your-ferriskey-instance/realms/{realm}/clients" \
+  -H "Authorization: Bearer {access_token}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": "string",
+    "client_type": "string",
+    "enabled": true,
+    "name": "string",
+    "protocol": "string",
+    "public_client": true,
+    "service_account_enabled": true
+  }'
+```
+
+Once created, you'll receive the client credentials that your application will use for authentication.
