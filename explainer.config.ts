@@ -34,15 +34,15 @@ export default defineExplainerConfig({
     tutorials: {
       icon: "lucide:graduation-cap",
       label: "Tutorials",
-      href: "/docs/tutorials/quickstart",
+      href: "/docs/tutorials/deploy-on-k8s",
       baseUrl: "/docs/tutorials",
     },
-    reference: {
-      icon: "lucide:braces",
-      label: "Reference",
-      href: "/docs/reference/api",
-      baseUrl: "/docs/reference",
-    },
+    // reference: {
+    //   icon: "lucide:braces",
+    //   label: "Reference",
+    //   href: "/docs/reference/helm-chart",
+    //   baseUrl: "/docs/reference",
+    // },
   },
   blog: {
     defaults: {
