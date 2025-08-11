@@ -86,8 +86,8 @@ services:
     restart: unless-stopped
   api-migration:
     image: ghcr.io/ferriskey/ferriskey-api:latest
-    env_file:
-      - api.env
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/ferriskey
     depends_on:
       - postgres
     command: >
@@ -98,8 +98,14 @@ services:
     restart: "no"
   api:
     image: ghcr.io/ferriskey/ferriskey-api:latest
-    env_file:
-      - api.env
+    environment:
+      - PORT=3333
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/ferriskey
+      - PORTAL_URL=http://localhost:5555
+      - ADMIN_EMAIL=admin@example.com
+      - ADMIN_PASSWORD=admin
+      - ADMIN_USERNAME=admin
+      - ALLOWED_ORIGINS=http://localhost:5555
     depends_on:
       api-migration:
         condition: service_completed_successfully
