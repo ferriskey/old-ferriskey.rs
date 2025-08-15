@@ -55,7 +55,10 @@ function handleHeroKeyKeyPress(event) {
         activeElement.tagName === 'TEXTAREA'
   )
 
-  if (isInputActive) return
+  if (isInputActive) return;
+
+  // Ignore system shortcuts like Cmd + C / Ctrl + C
+  if (event.metaKey || event.ctrlKey) return;
 
   if (event.key === 'c' || event.key === 'C') {
              // Cliquer sur le bouton GitHub
