@@ -1,180 +1,315 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/hero.astro'
-import Separator from '../components/separator.astro'
-import { ChevronDown, Bug, Binoculars, ScanFace, Blocks, CircleGauge, Server, Earth } from '@lucide/astro'
-import Banner from '../components/banner.astro';
-import Navbar from '../components/navbar.astro';
-import Sponsors from '../components/sponsors.astro'
-import Team from '../components/team.astro'
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/hero.astro";
+import Separator from "../components/separator.astro";
+import {
+    ChevronDown,
+    Bug,
+    Binoculars,
+    ScanFace,
+    Blocks,
+    CircleGauge,
+    Server,
+    Earth,
+} from "@lucide/astro";
+import Banner from "../components/banner.astro";
+import Navbar from "../components/navbar.astro";
+import Sponsors from "../components/sponsors.astro";
+import Team from "../components/team.astro";
 ---
 
 <Layout>
+    <main
+        class="mx-3 grow md:mx-8 lg:mx-12 border-primary/50 border-r border-l"
+    >
+        <Banner />
+        <Hero />
+        <section class="-mx-3 flex items-center justify-center md:-mx-12">
+            <hr class="border-primary/50 w-full border-t" />
+        </section>
 
-
-
-        <main class="mx-3 grow md:mx-8 lg:mx-12 border-orange-200/50 border-r border-l">
-            <Banner />
-
-            <Hero />
-
-            <section class="-mx-3 flex items-center justify-center md:-mx-12">
-                <hr class="border-orange-200/50 w-full border-t">
-            </section>
-
-            <section
-                class="-mt-[8rem] origin-top px-4 pb-8 sm:px-6 sm:pb-20 md:-mt-[7.8rem] lg:-mt-[7.3rem] xl:-mt-[6.1rem]"
-                style="opacity: 1; transform: none; transform-origin: 50% 0% 0px;"
+        <section
+            class="-mt-[8rem] origin-top px-4 pb-8 sm:px-6 sm:pb-20 md:-mt-[7.8rem] lg:-mt-[7.3rem] xl:-mt-[6.1rem]"
+            style="opacity: 1; transform: none; transform-origin: 50% 0% 0px;"
+        >
+            <div
+                class="mx-auto w-full max-w-(--breakpoint-sm) md:max-w-[1100px] group sh-default relative overflow-hidden rounded-sm bg-gray-50/80 dark:bg-[hsl(218,_13%,_6%,_.95)] sm:border border-gray-300/90 dark:border-gray-600/60"
             >
-                <div class="mx-auto w-full max-w-(--breakpoint-sm) md:max-w-[1100px] group sh-default relative overflow-hidden rounded-sm bg-gray-50/80 dark:bg-[hsl(218,_13%,_6%,_.95)] sm:border border-gray-300/90 dark:border-gray-600/60">
-
-
-                    <div class="relative hidden grid-cols-1 content-end sm:grid sm:grid-cols-3 grid-border-color border-b divide-x-0 divide-y divide-color sm:divide-x sm:divide-y-0">
-                        <div class="flex flex-col w-full p-4">
-                            <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                <CircleGauge class="w-4" />
-                                Blazing Fast
-                            </p>
-                            <p class="text-left text-balance text-[.8125rem]">
-                                Rust-powered core for ultra-fast authentication and authorization.
-                            </p>
-                        </div>
-                        <div class="flex flex-col w-full p-4">
-                            <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                <Server class="w-4" />
-                                Cloud Native
-                            </p>
-                            <p class="text-left text-balance text-[.8125rem]">
-                                Seamless deployment on Kubernetes and modern cloud environments.
-                            </p>
-                        </div>
-                        <div class="flex flex-col w-full p-4">
-                            <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                <Earth class="w-4" />
-                                Open & Extensible
-                            </p>
-                            <p class="text-left text-balance text-[.8125rem]">100% open-source, fully customizable, no vendor lock-in.</p>
-                        </div>
+                <div
+                    class="relative hidden grid-cols-1 content-end sm:grid sm:grid-cols-3 grid-border-color border-b divide-x-0 divide-y divide-color sm:divide-x sm:divide-y-0"
+                >
+                    <div class="flex flex-col w-full p-4">
+                        <p
+                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                        >
+                            <CircleGauge class="w-4" />
+                            Blazing Fast
+                        </p>
+                        <p class="text-left text-balance text-[.8125rem]">
+                            Rust-powered core for ultra-fast authentication and
+                            authorization.
+                        </p>
                     </div>
-
-                    <div class="hidden w-full grid-cols-1 gap-8 md:grid md:grid-cols-6 p-4">
-                        <div class="col-span-full h-full md:col-span-3 md:!col-span-2">
-                            <div class="relative flex size-full flex-col gap-4">
-                                <div class="default-border-color rounded-sm border p-2.5 dark:bg-offgray-800/8 bg-white/60 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] group transform-all relative overflow-clip duration-70 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)]">
-                                    <svg class="pointer-events-none absolute inset-0 [z-index:-1] size-full select-none text-blue-300 dark:text-blue-400/10"><defs><pattern id=":Rlcnp2fknq6ja:" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="1.5"></line></pattern></defs><rect width="100%" height="100%" fill="url(#:Rlcnp2fknq6ja:)"></rect></svg>
-                                    <div class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80">
-                                        <img src="/clients_screen.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="flex flex-col">
-                                    <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                        <Binoculars class="w-4" />
-                                        Built-in Audit & Security Observability</p>
-
-                                    <p class="text-left text-balance text-sm">Native SeaWatch module—track, visualize, and react to authentication events, security incidents, and user actions with real-time audit logs.</p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-span-full h-full md:col-span-3 md:!col-span-2">
-                            <div class="relative flex size-full flex-col gap-4">
-                                <div class="default-border-color rounded-sm border p-2.5 dark:bg-offgray-800/8 bg-white/60 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] group transform-all relative overflow-clip duration-70 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)]">
-                                    <svg class="pointer-events-none absolute inset-0 [z-index:-1] size-full select-none text-blue-300 dark:text-blue-400/10"><defs><pattern id=":Rlcnp2fknq6ja:" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="1.5"></line></pattern></defs><rect width="100%" height="100%" fill="url(#:Rlcnp2fknq6ja:)"></rect></svg>
-                                    <div class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80">
-                                        <img src="/trident_hero.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="flex flex-col">
-                                    <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                        <ScanFace class="w-4" />
-                                        Next-Gen Multi-Factor Authentication</p>
-
-                                    <p class="text-left text-balance text-sm">Trident brings seamless MFA with support for TOTP, magic link, WebAuthn, and adaptive authentication out of the box no custom plugins needed.</p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-span-full h-full md:col-span-3 md:!col-span-2">
-                            <div class="relative flex size-full flex-col gap-4">
-                                <div class="default-border-color rounded-sm border p-2.5 dark:bg-offgray-800/8 bg-white/60 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] group transform-all relative overflow-clip duration-70 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)]">
-                                    <svg class="pointer-events-none absolute inset-0 [z-index:-1] size-full select-none text-blue-300 dark:text-blue-400/10"><defs><pattern id=":Rlcnp2fknq6ja:" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="1.5"></line></pattern></defs><rect width="100%" height="100%" fill="url(#:Rlcnp2fknq6ja:)"></rect></svg>
-                                    <div class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80">
-                                        <img src="/swagger.png" alt="">
-
-                                    </div>
-                                </div>
-                                <div class="flex flex-col">
-                                    <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-
-                                        <Blocks class="w-4" />
-                                        First-Class Webhooks & Extensibility</p>
-
-                                    <p class="text-left text-balance text-sm">Trigger external workflows on any IAM event provision users, sync roles, enforce policies without hacking the core. FerrisKey makes integration effortless.</p>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="flex flex-col w-full p-4">
+                        <p
+                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                        >
+                            <Server class="w-4" />
+                            Cloud Native
+                        </p>
+                        <p class="text-left text-balance text-[.8125rem]">
+                            Seamless deployment on Kubernetes and modern cloud
+                            environments.
+                        </p>
+                    </div>
+                    <div class="flex flex-col w-full p-4">
+                        <p
+                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                        >
+                            <Earth class="w-4" />
+                            Open & Extensible
+                        </p>
+                        <p class="text-left text-balance text-[.8125rem]">
+                            100% open-source, fully customizable, no vendor
+                            lock-in.
+                        </p>
                     </div>
                 </div>
 
-                <div class="flex sm:hidden">
-                    <div class="relative grid grid-cols-1 content-end bg-white">
-                        <div class="flex flex-col w-full p-4 bg-white">
-                            <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                <CircleGauge class="w-4" />
-                                Blazing Fast
-                            </p>
-                            <p class="text-left text-balance text-[.8125rem]">
-                                Rust-powered core for ultra-fast authentication and authorization.
-                            </p>
-                        </div>
-                        <div class="flex flex-col w-full p-4">
-                            <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                <Server class="w-4" />
-                                Cloud Native
-                            </p>
-                            <p class="text-left text-balance text-[.8125rem]">
-                                Seamless deployment on Kubernetes and modern cloud environments.
-                            </p>
-                        </div>
-                        <div class="flex flex-col w-full p-4">
-                            <p class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center">
-                                <Earth class="w-4" />
-                                Open & Extensible
-                            </p>
-                            <p class="text-left text-balance text-[.8125rem]">100% open-source, fully customizable, no vendor lock-in.</p>
+                <div
+                    class="hidden w-full grid-cols-1 gap-8 md:grid md:grid-cols-6 p-4"
+                >
+                    <div
+                        class="col-span-full h-full md:col-span-3 md:!col-span-2"
+                    >
+                        <div class="relative flex size-full flex-col gap-4">
+                            <div
+                                class="default-border-color rounded-sm border p-2.5 dark:bg-offgray-800/8 bg-white/60 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] group transform-all relative overflow-clip duration-70 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)]"
+                            >
+                                <svg
+                                    class="pointer-events-none absolute inset-0 [z-index:-1] size-full select-none text-blue-300 dark:text-blue-400/10"
+                                    ><defs
+                                        ><pattern
+                                            id=":Rlcnp2fknq6ja:"
+                                            width="4"
+                                            height="4"
+                                            patternUnits="userSpaceOnUse"
+                                            patternTransform="rotate(45)"
+                                            ><line
+                                                x1="0"
+                                                y1="0"
+                                                x2="0"
+                                                y2="4"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            ></line></pattern
+                                        ></defs
+                                    ><rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="url(#:Rlcnp2fknq6ja:)"
+                                    ></rect></svg
+                                >
+                                <div
+                                    class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80"
+                                >
+                                    <img src="/clients_screen.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <p
+                                    class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                                >
+                                    <Binoculars class="w-4" />
+                                    Built-in Audit & Security Observability
+                                </p>
+
+                                <p class="text-left text-balance text-sm">
+                                    Native SeaWatch module—track, visualize, and
+                                    react to authentication events, security
+                                    incidents, and user actions with real-time
+                                    audit logs.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
+                    <div
+                        class="col-span-full h-full md:col-span-3 md:!col-span-2"
+                    >
+                        <div class="relative flex size-full flex-col gap-4">
+                            <div
+                                class="default-border-color rounded-sm border p-2.5 dark:bg-offgray-800/8 bg-white/60 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] group transform-all relative overflow-clip duration-70 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)]"
+                            >
+                                <svg
+                                    class="pointer-events-none absolute inset-0 [z-index:-1] size-full select-none text-blue-300 dark:text-blue-400/10"
+                                    ><defs
+                                        ><pattern
+                                            id=":Rlcnp2fknq6ja:"
+                                            width="4"
+                                            height="4"
+                                            patternUnits="userSpaceOnUse"
+                                            patternTransform="rotate(45)"
+                                            ><line
+                                                x1="0"
+                                                y1="0"
+                                                x2="0"
+                                                y2="4"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            ></line></pattern
+                                        ></defs
+                                    ><rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="url(#:Rlcnp2fknq6ja:)"
+                                    ></rect></svg
+                                >
+                                <div
+                                    class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80"
+                                >
+                                    <img src="/trident_hero.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <p
+                                    class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                                >
+                                    <ScanFace class="w-4" />
+                                    Next-Gen Multi-Factor Authentication
+                                </p>
 
+                                <p class="text-left text-balance text-sm">
+                                    Trident brings seamless MFA with support for
+                                    TOTP, magic link, WebAuthn, and adaptive
+                                    authentication out of the box no custom
+                                    plugins needed.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="col-span-full h-full md:col-span-3 md:!col-span-2"
+                    >
+                        <div class="relative flex size-full flex-col gap-4">
+                            <div
+                                class="default-border-color rounded-sm border p-2.5 dark:bg-offgray-800/8 bg-white/60 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] group transform-all relative overflow-clip duration-70 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)]"
+                            >
+                                <svg
+                                    class="pointer-events-none absolute inset-0 [z-index:-1] size-full select-none text-blue-300 dark:text-blue-400/10"
+                                    ><defs
+                                        ><pattern
+                                            id=":Rlcnp2fknq6ja:"
+                                            width="4"
+                                            height="4"
+                                            patternUnits="userSpaceOnUse"
+                                            patternTransform="rotate(45)"
+                                            ><line
+                                                x1="0"
+                                                y1="0"
+                                                x2="0"
+                                                y2="4"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                            ></line></pattern
+                                        ></defs
+                                    ><rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="url(#:Rlcnp2fknq6ja:)"
+                                    ></rect></svg
+                                >
+                                <div
+                                    class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80"
+                                >
+                                    <img src="/swagger.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <p
+                                    class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                                >
+                                    <Blocks class="w-4" />
+                                    First-Class Webhooks & Extensibility
+                                </p>
+
+                                <p class="text-left text-balance text-sm">
+                                    Trigger external workflows on any IAM event
+                                    provision users, sync roles, enforce
+                                    policies without hacking the core. FerrisKey
+                                    makes integration effortless.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-            </section>
+            <div class="flex sm:hidden">
+                <div class="relative grid grid-cols-1 content-end bg-white">
+                    <div class="flex flex-col w-full p-4 bg-white">
+                        <p
+                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                        >
+                            <CircleGauge class="w-4" />
+                            Blazing Fast
+                        </p>
+                        <p class="text-left text-balance text-[.8125rem]">
+                            Rust-powered core for ultra-fast authentication and
+                            authorization.
+                        </p>
+                    </div>
+                    <div class="flex flex-col w-full p-4">
+                        <p
+                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                        >
+                            <Server class="w-4" />
+                            Cloud Native
+                        </p>
+                        <p class="text-left text-balance text-[.8125rem]">
+                            Seamless deployment on Kubernetes and modern cloud
+                            environments.
+                        </p>
+                    </div>
+                    <div class="flex flex-col w-full p-4">
+                        <p
+                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                        >
+                            <Earth class="w-4" />
+                            Open & Extensible
+                        </p>
+                        <p class="text-left text-balance text-[.8125rem]">
+                            100% open-source, fully customizable, no vendor
+                            lock-in.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-             <section class="-mx-3 flex items-center justify-center md:-mx-12"><hr class="border-orange-200/50 w-full border-t"></section>
+        <section class="-mx-3 flex items-center justify-center md:-mx-12">
+            <hr class="border-primary/50 w-full border-t" />
+        </section>
 
-            <Separator />
+        <Separator />
 
-            <section class="-mx-3 flex items-center justify-center md:-mx-12"><hr class="border-orange-200/50 w-full border-t"></section>
+        <section class="-mx-3 flex items-center justify-center md:-mx-12">
+            <hr class="border-primary/50 w-full border-t" />
+        </section>
 
-            <Sponsors />
+        <Sponsors />
 
-            <section class="-mx-3 flex items-center justify-center md:-mx-12">
-                <hr class="border-orange-200/50 w-full border-t">
-            </section>
+        <section class="-mx-3 flex items-center justify-center md:-mx-12">
+            <hr class="border-primary/50 w-full border-t" />
+        </section>
 
-            <Separator />
+        <Separator />
 
-            <section class="-mx-3 flex items-center justify-center md:-mx-12"><hr class="border-orange-200/50 w-full border-t"></section>
+        <section class="-mx-3 flex items-center justify-center md:-mx-12">
+            <hr class="border-primary/50 w-full border-t" />
+        </section>
 
-
-            <Team />
-
-
-        </main>
-
-    </div>
-
+        <Team />
+    </main>
 </Layout>

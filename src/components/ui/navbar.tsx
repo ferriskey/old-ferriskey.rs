@@ -1,76 +1,266 @@
-import { Link } from "@radix-ui/react-navigation-menu";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./navigation-menu";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { useTheme } from "@/lib/hooks/use-theme";
+import { cn } from "@/lib/utils";
+import config from "explainer.config";
+import { LaptopIcon, MenuIcon, MoonIcon, SunIcon } from "lucide-react";
+import * as React from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
 
-export default function Navbar() {
+const ListItem = React.forwardRef<
+  React.ComponentRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
   return (
-    <header className="nav-background sticky top-0 z-20 h-[57px] flex w-full max-w-full bg-white items-center border-orange-200/50 border-b">
-
-      <div className="grid-border-color relative mx-3 flex w-full border-x md:mx-8 lg:mx-12">
-        <div className="absolute z-10 size-2 rotate-45 rounded-[1px] border border-orange-200 dark:border-orange-300/25 bg-white dark:bg-black bottom-1 left-[-4.5px]" />
-        <div className="absolute z-10 size-2 rotate-45 rounded-[1px] border border-orange-200 dark:border-orange-300/25 bg-white dark:bg-black right-[-4.5px] bottom-1" />
-
-
-        <nav className="relative z-2 w-full md:mx-auto md:max-w-[1148px] px-4 py-3 md:px-6 flex justify-between gap-4 lg:gap-0">
-          <div className="flex flex-none items-center gap-3">
-            <a href="/" className="size-[50px] flex items-center rounded-sm transition-transform hover:scale-105">
-              <img
-                alt="Ferriskey logo"
-
-                decoding="async"
-                data-nimg="1"
-                src="/logo_ferriskey.png" />
-            </a>
-
-            <div className="relative w-full">
-              <NavigationMenu viewport={false}>
-                <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>
-                      Product
-                    </NavigationMenuTrigger>
-
-                    <NavigationMenuContent className="bg-white">
-                      <div className="gap-2 md:w-[400px] lg:w-[500px]">
-                        <ListItem href="/products/trident" title="Trident" className="hover:bg-gray-100 rounded-md">
-                          Advanced multi-factor authentication and policy engine—secure every login and critical action.
-                        </ListItem>
-
-                      </div>
-
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-
-              </NavigationMenu>
-            </div>
-
-
-          </div>
-        </nav>
-
-      </div>
-
-    </header>
-  )
-}
-
-
-function ListItem({
-  title,
-  children,
-  href,
-  ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
-  return (
-    <li {...props}>
+    <li>
       <NavigationMenuLink asChild>
-        <a href={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className,
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </a>
       </NavigationMenuLink>
     </li>
-  )
+  );
+});
+ListItem.displayName = "ListItem";
+
+export default function Navbar() {
+  return (
+    <div className="sticky top-0 z-50 w-full p-2 py-3 border-b bg-background/70 backdrop-blur-sm">
+      <div className="max-w-screen-xl mx-auto flex items-center justify-between">
+        <a href="/" className="flex sm:hidden items-center space-x-2">
+          <img src="/logo_ferriskey.png" alt="Logo" className="w-10 h-10" />
+          <span className="font-medium text-primary text-lg">
+            {" "}
+            {config.meta.title}
+          </span>
+        </a>
+
+        <div className="hidden lg:flex items-center justify-between w-full">
+          <a href="/" className="flex items-center space-x-2">
+            <img src="/logo_ferriskey.png" alt="Logo" className="w-10 h-10" />
+            <span className="font-medium text-primary text-lg">
+              {config.meta.title}
+            </span>
+          </a>
+          <NavigationMenu>
+            <NavigationMenuList>
+              {config.navbar.map((element) => {
+                if (element.href) {
+                  return (
+                    <NavigationMenuItem key={element.label}>
+                      <NavigationMenuLink
+                        href={element.href}
+                        className="px-3 py-2 text-sm font-medium !bg-transparent hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer"
+                      >
+                        {element.label}
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  );
+                }
+                return (
+                  <NavigationMenuItem key={element.label}>
+                    <NavigationMenuTrigger className="!bg-transparent">
+                      {element.label}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="bg-background">
+                      <ul className="grid w-[400px] gap-3 p-1 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        {element.items?.map((item) => (
+                          <ListItem
+                            key={item.label}
+                            title={item.label}
+                            href={item.href}
+                          >
+                            {item.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                );
+              })}
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <div className="flex items-center space-x-2">
+            <ThemeToggle />
+
+            {config.urls.github && (
+              <a
+                href={config.urls.github}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text) hover:bg-(--ui-bg-elevated) focus:outline-none focus-visible:bg-(--ui-bg-elevated) hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                  ></path>
+                </svg>
+                <span className="sr-only">{config.meta.title} on GitHub</span>
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 sm:hidden">
+          <ThemeToggle />
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <MenuIcon className="size-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              className="flex flex-col justify-between gap-4 bg-background"
+              side="left"
+            >
+              <div>
+                <SheetHeader>
+                  <SheetTitle>{config.meta.title}</SheetTitle>
+                </SheetHeader>
+                <SheetDescription />
+                <div className="flex flex-col items-start gap-2">
+                  <a
+                    href="/"
+                    className="pt-5 text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer"
+                  >
+                    Home
+                  </a>
+                  {config.navbar.map((element) => {
+                    if (element.href) {
+                      return (
+                        <a
+                          key={element.label}
+                          href={element.href}
+                          className="text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer"
+                        >
+                          {element.label}
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <div key={element.label}>
+                        <p className="text-sm font-medium">{element.label}</p>
+                        <ul className="flex flex-col items-start gap-5 pt-2 pb-5">
+                          {element.items?.map((item) => (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              className="flex flex-col px-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer"
+                            >
+                              <span>{item.label}</span>
+                              <span className="text-xs text-muted-foreground">
+                                {item.description}
+                              </span>
+                            </a>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <SheetFooter>
+                {config.urls.github && (
+                  <Button variant="outline" asChild>
+                    <a
+                      href={config.urls.github}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      className="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text) hover:bg-(--ui-bg-elevated) focus:outline-none focus-visible:bg-(--ui-bg-elevated) hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                        ></path>
+                      </svg>
+                      <span className="">GitHub</span>
+                    </a>
+                  </Button>
+                )}
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ThemeToggle() {
+  const [open, setOpen] = React.useState(false);
+  const { theme, setTheme } = useTheme();
+  return (
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger asChild onClick={() => setOpen(!open)}>
+        <Button variant="ghost" size="icon">
+          {theme === "light" ? (
+            <SunIcon className="h-5 w-5" />
+          ) : theme === "dark" ? (
+            <MoonIcon className="h-5 w-5" />
+          ) : (
+            <LaptopIcon className="h-5 w-5" />
+          )}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          <SunIcon className="mr-2 h-4 w-4" />
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          <MoonIcon className="mr-2 h-4 w-4" />
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          <LaptopIcon className="mr-2 h-4 w-4" />
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }

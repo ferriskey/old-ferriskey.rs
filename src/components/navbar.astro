@@ -1,17 +1,45 @@
 ---
-import {  ChevronDown } from '@lucide/astro'
-
+import { ChevronDown } from "@lucide/astro";
 ---
 
-<header class="nav-background sticky top-0 z-20 h-[57px] flex w-full max-w-full items-center grid-border-color border-b">
-
-    <div class="grid-border-color relative mx-3 flex w-full border-x md:mx-8 lg:mx-12">
-        <div class="absolute z-10 size-2 rotate-45 rounded-[1px] border border-orange-200 dark:border-orange-300/25 bg-white dark:bg-black bottom-[-4.5px] left-[-4.5px]"></div>
-        <div class="absolute z-10 size-2 rotate-45 rounded-[1px] border border-orange-200 dark:border-orange-300/25 bg-white dark:bg-black right-[-4.5px] bottom-[-4.5px]"></div>
-        <nav aria-label="Site's main navigation" data-orientation="horizontal" dir="ltr" class="relative z-2 w-full md:mx-auto md:max-w-[1148px] px-4 py-3 md:px-6 flex justify-between gap-4 lg:gap-0">
+<header
+    class="nav-background sticky top-0 z-20 h-[57px] flex w-full max-w-full items-center grid-border-color border-b"
+>
+    <div
+        class="grid-border-color relative mx-3 flex w-full border-x md:mx-8 lg:mx-12"
+    >
+        <div
+            class="absolute z-10 size-2 rotate-45 rounded-[1px] border border-primary dark:border-orange-300/25 bg-white dark:bg-black bottom-[-4.5px] left-[-4.5px]"
+        >
+        </div>
+        <div
+            class="absolute z-10 size-2 rotate-45 rounded-[1px] border border-primary dark:border-orange-300/25 bg-white dark:bg-black right-[-4.5px] bottom-[-4.5px]"
+        >
+        </div>
+        <nav
+            aria-label="Site's main navigation"
+            data-orientation="horizontal"
+            dir="ltr"
+            class="relative z-2 w-full md:mx-auto md:max-w-[1148px] px-4 py-3 md:px-6 flex justify-between gap-4 lg:gap-0"
+        >
             <div class="flex flex-none items-center gap-3">
-                <a aria-label="Go back to zed.dev homepage" class="fv-style size-[26px] rounded-sm transition-transform hover:scale-105" href="/">
-                    <img alt="Ferriskey logo" fetchpriority="high" width="356" height="356" decoding="async" data-nimg="1" class="block" style="color:transparent" sizes="356px" src="/logo_ferriskey.png">
+                <a
+                    aria-label="Go back to zed.dev homepage"
+                    class="fv-style size-[26px] rounded-sm transition-transform hover:scale-105"
+                    href="/"
+                >
+                    <img
+                        alt="Ferriskey logo"
+                        fetchpriority="high"
+                        width="356"
+                        height="356"
+                        decoding="async"
+                        data-nimg="1"
+                        class="block"
+                        style="color:transparent"
+                        sizes="356px"
+                        src="/logo_ferriskey.png"
+                    />
                 </a>
                 <!-- <div style="position:relative">
                     <ul data-orientation="horizontal" class="hidden list-none items-center lg:flex" dir="ltr">
@@ -36,11 +64,7 @@ import {  ChevronDown } from '@lucide/astro'
                 </div> -->
             </div>
 
-            <div class="relative">
-                prout
-
-            </div>
+            <div class="relative">prout</div>
         </nav>
     </div>
-
 </header>

@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Joris Vilardell",
     role: "Software Engineer",
-    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQHzm2tJWI22Wg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706510255978?e=1756944000&v=beta&t=JY_AjeBRVMw-dUoMEkdWAqEi9X7nQtqe-GpFA9Yhmig",
+    avatar: "https://media.licdn.com/dms/image/v2/D4E03AQHzm2tJWI22Wg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1706510255978?e=1759968000&v=beta&t=sib8kdV7xp2WZj0s8AZCPqN5gI6WpG3wwHEtOOdhBdU",
     github: "ZUHOWKS",
     linkedin: "joris-vilardell-76050427b/"
   },
@@ -176,7 +176,7 @@ const contributors: Contributor[] = [
             <!-- Core Team Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {teamMembers.map(member => (
-                    <div class="group default-border-color rounded-sm border p-6 bg-white/60 dark:bg-offgray-800/8 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] transform-all relative overflow-clip duration-75 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 hover:!border-orange-300 dark:hover:!border-orange-400/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)] transition-all">
+                    <div class="group default-border-color rounded-sm border p-6 bg-white/60 dark:bg-background dark:bg-offgray-800/8 shadow-[6px_6px_0_hsla(219,_93%,_42%,_0.06)] dark:shadow-[5px_5px_0_hsla(219,_90%,_60%,_0.08)] transform-all relative overflow-clip duration-75 hover:bg-blue-50/15 dark:hover:bg-blue-900/15 border-primary/50 dark:hover:!border-primary/50 hover:[box-shadow:_6px_6px_0_hsla(219,_100%,_40%,_0.06),-6px_-6px_0_hsla(219,_100%,_40%,_0.06)] dark:hover:[box-shadow:_6px_6px_0_hsla(219,_93%,_60%,_0.08),-6px_-6px_0_hsla(219,_93%,_80%,_0.08)] transition-all">
 
                         <!-- Background pattern -->
                         <svg class="pointer-events-none absolute inset-0 [z-index:-1] size-full select-none text-orange-300/50 ">
@@ -194,7 +194,7 @@ const contributors: Contributor[] = [
                                 <img
                                     src={member.avatar}
                                     alt={`${member.name} avatar`}
-                                    class="w-20 h-20 rounded-full object-cover border-2 border-orange-200 dark:border-blue-300/25 group-hover:border-orange-300 dark:group-hover:border-orange-400/50 transition-colors"
+                                    class="w-20 h-20 rounded-full object-cover border-2 border-primary group-hover:border-orange-300 dark:group-hover:border-orange-400/50 transition-colors"
                                 />
                                 <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800"></div>
                             </div>
@@ -303,7 +303,7 @@ const contributors: Contributor[] = [
                                <img
                                    src={contributor.avatar_url}
                                    alt={`${contributor.login} avatar`}
-                                   class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border-2 border-orange-200/50 dark:border-blue-300/25 group-hover:border-orange-400 dark:group-hover:border-orange-400/70 transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg"
+                                   class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border-2 border-primary/50 group-hover:border-orange-400 dark:group-hover:border-orange-400/70 transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg"
                                />
 
 

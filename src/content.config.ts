@@ -9,14 +9,6 @@ export const docSchema = z.object({
   icon: z.string().optional(),
 });
 
-const framework = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "./src/content/docs/framework",
-  }),
-  schema: docSchema,
-});
-
 const welcome = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
@@ -79,7 +71,6 @@ const blog = defineCollection({
 
 export const collections = {
   blog,
-  framework,
   concepts,
   tutorials,
   tasks,

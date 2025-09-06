@@ -63,37 +63,54 @@ export default defineExplainerConfig({
   },
   navbar: [
     {
-      label: "Docs",
+      label: "Documentation",
       items: [
         {
+          label: "Getting started",
+          description:
+            "A quick introduction to FerrisKey and how to get started with installation and basic usage.",
+          href: "/docs/welcome/introduction",
+        },
+        {
           label: "Concepts",
-          description: "Learn about the core concepts of Explainer.",
+          description:
+            "Discover the philosophie, architecture and core concepts of FerriseKey.",
           href: "/docs/concepts/overview",
         },
         {
           label: "Tutorials",
-          description: "Learn how to use Explainer.",
-          href: "/docs/tutorials/quickstart",
+          description:
+            "Step-by-step guides to help you deploy, configure, and use FerrisKey in real-world scenarios.",
+          href: "/docs/tutorials/deploy-on-k8s",
         },
         {
-          label: "Tasks",
-          description: "Learn how to use Explainer.",
-          href: "/docs/tasks/manage-users",
+          label: "Modules",
+          description:
+            "Explore the different modules that make up FerrisKey and learn how they work together.",
+          href: "/docs/modules/trident",
+        },
+      ],
+    },
+    {
+      label: "Modules",
+      items: [
+        {
+          label: "Trident",
+          description:
+            "Advanced multi-factor authentication and policy engine—secure every login and critical action.",
+          href: "/docs/modules/trident",
         },
         {
-          label: "Reference",
-          description: "Learn how to use Explainer.",
-          href: "/docs/reference/api",
+          label: "Webhooks",
+          description:
+            "Integrate external systems and automate workflows with FerrisKey's flexible webhook support.",
+          href: "/docs/modules/webhooks",
         },
       ],
     },
     {
       label: "About",
       href: "/about",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
     },
   ],
   social: {
