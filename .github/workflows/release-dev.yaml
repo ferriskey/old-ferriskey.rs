@@ -10,20 +10,20 @@ permissions:
   packages: write
 
 jobs:
-  prepare-ci:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.extract_version.outputs.result }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Extract version from short-sha
-        id: extract_version
-        run: |
-          SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-7)
-          echo "RELEASE_TAG=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
-          echo "RELEASE_VERSION=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
-          echo "::set-output name=result::${SHORT_SHA}"
+  # prepare-ci:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     version: ${{ steps.extract_version.outputs.result }}
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #     - name: Extract version from short-sha
+  #       id: extract_version
+  #       run: |
+  #         SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-7)
+  #         echo "RELEASE_TAG=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+  #         echo "RELEASE_VERSION=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+  #         echo "::set-output name=result::${SHORT_SHA}"
   build:
     runs-on: ubuntu-latest
     steps:
