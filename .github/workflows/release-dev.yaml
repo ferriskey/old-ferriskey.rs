@@ -6,6 +6,7 @@ on:
       - main
 
 permissions:
+  contents: read
   packages: write
 
 jobs:
@@ -23,18 +24,71 @@ jobs:
           echo "RELEASE_TAG=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
           echo "RELEASE_VERSION=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
           echo "::set-output name=result::${SHORT_SHA}"
-  build-front:
-    needs: [prepare-ci]
-    uses: ferriskey/ferriskey/.github/workflows/build-and-push-docker.yaml@main
-    with:
-      registry: ghcr.io
-      registry_username: ferriskey
-      image_name: ferriskey-website
-      repository: ferriskey/ferriskey.rs
-      tag: ${{ needs.prepare-ci.outputs.version }}
-      ref: main
-      context: "."
-      dockerfile: ""
-    secrets:
-      CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      PAT: ${{ secrets.GITHUB_TOKEN }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5
+
+      - name: set up builx
+        uses: docker/setup-buildx-action@v3
+
+      - name: cache layers
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/.buildx-cache
+          key: buildx-ubuntu-${{ runner.arch }}-${{ github.sha }}
+          restore-keys: |
+            buildx-ubuntu-${{ runner.arch }}-
+            buildx-ubuntu-
+
+      - name: get image metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/ferriskey/ferriskey-website
+
+      - name: log-in to ghcr
+        if: inputs.push || startsWith(github.ref, 'refs/tags/v') || github.ref_name == github.event.repository.default_branch
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build and push
+        uses: docker/build-push-action@v6
+        id: build
+        with:
+          context: .
+          target: ${{ matrix.target }}
+          platforms: ${{ matrix.runner.platform }}
+          tags: ghcr.io/ferriskey/ferriskey-website
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
+          cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max
+          outputs: type=image,push-by-digest=true,name-canonical=true,push=${{ inputs.push || startsWith(github.ref, 'refs/tags/v') || github.ref_name == github.event.repository.default_branch }}
+
+      - name: prepare digest
+        id: digest
+        if: inputs.push || startsWith(github.ref, 'refs/tags/v') || github.ref_name == github.event.repository.default_branch
+        run: |
+          mkdir -p ${{ runner.temp }}/digests
+          digest="${{ steps.build.outputs.digest }}"
+          touch "${{ runner.temp }}/digests/${digest#sha256:}"
+
+      - name: upload digest
+        if: inputs.push || startsWith(github.ref, 'refs/tags/v') || github.ref_name == github.event.repository.default_branch
+        uses: actions/upload-artifact@v4
+        with:
+          name: digests-${{ runner.arch }}-${{ matrix.target }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+      # https://github.com/docker/build-push-action/issues/252
+      # https://github.com/moby/buildkit/issues/1896
+      - name: move cache
+        run: |
+          rm -rf ${{ runner.temp }}/.buildx-cache
+          mv ${{ runner.temp }}/.buildx-cache-new ${{ runner.temp }}/.buildx-cache
