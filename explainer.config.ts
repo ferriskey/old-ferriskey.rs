@@ -64,32 +64,7 @@ export default defineExplainerConfig({
   navbar: [
     {
       label: "Documentation",
-      items: [
-        {
-          label: "Getting started",
-          description:
-            "A quick introduction to FerrisKey and how to get started with installation and basic usage.",
-          href: "/docs/welcome/introduction",
-        },
-        {
-          label: "Concepts",
-          description:
-            "Discover the philosophie, architecture and core concepts of FerriseKey.",
-          href: "/docs/concepts/overview",
-        },
-        {
-          label: "Tutorials",
-          description:
-            "Step-by-step guides to help you deploy, configure, and use FerrisKey in real-world scenarios.",
-          href: "/docs/tutorials/deploy-on-k8s",
-        },
-        {
-          label: "Modules",
-          description:
-            "Explore the different modules that make up FerrisKey and learn how they work together.",
-          href: "/docs/modules/trident",
-        },
-      ],
+      href: "/docs",
     },
     {
       label: "Modules",
@@ -98,19 +73,9 @@ export default defineExplainerConfig({
           label: "Trident",
           description:
             "Advanced multi-factor authentication and policy engine—secure every login and critical action.",
-          href: "/docs/modules/trident",
-        },
-        {
-          label: "Webhooks",
-          description:
-            "Integrate external systems and automate workflows with FerrisKey's flexible webhook support.",
-          href: "/docs/modules/webhooks",
+          href: "/products/trident",
         },
       ],
-    },
-    {
-      label: "About",
-      href: "/about",
     },
   ],
   social: {

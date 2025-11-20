@@ -20,12 +20,12 @@ import Team from "../components/team.astro";
 
 <Layout>
     <main
-        class="mx-3 grow md:mx-8 lg:mx-12 border-primary/50 border-r border-l"
+        class="mx-3 grow md:mx-8 lg:mx-12 border-primary/20 border-r border-l"
     >
         <Banner />
         <Hero />
         <section class="-mx-3 flex items-center justify-center md:-mx-12">
-            <hr class="border-primary/50 w-full border-t" />
+            <hr class="border-primary/20 w-full border-t" />
         </section>
 
         <section
@@ -36,11 +36,11 @@ import Team from "../components/team.astro";
                 class="mx-auto w-full max-w-(--breakpoint-sm) md:max-w-[1100px] group sh-default relative overflow-hidden rounded-sm bg-gray-50/80 dark:bg-[hsl(218,_13%,_6%,_.95)] sm:border border-gray-300/90 dark:border-gray-600/60"
             >
                 <div
-                    class="relative hidden grid-cols-1 content-end sm:grid sm:grid-cols-3 grid-border-color border-b divide-x-0 divide-y divide-color sm:divide-x sm:divide-y-0"
+                    class="relative hidden grid-cols-1 content-end sm:grid sm:grid-cols-3 grid-border-color border-b divide-x-0 divide-y divide-color sm:divide-x sm:divide-y-0 transform -translate-y-0.5"
                 >
                     <div class="flex flex-col w-full p-4">
                         <p
-                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                            class="flex gap-2 text-sm text-gray-700 dark:text-gray-200 mb-1 items-center"
                         >
                             <CircleGauge class="w-4" />
                             Blazing Fast
@@ -52,7 +52,7 @@ import Team from "../components/team.astro";
                     </div>
                     <div class="flex flex-col w-full p-4">
                         <p
-                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                            class="flex gap-2 text-sm text-gray-700 dark:text-gray-200 mb-1 items-center"
                         >
                             <Server class="w-4" />
                             Cloud Native
@@ -64,7 +64,7 @@ import Team from "../components/team.astro";
                     </div>
                     <div class="flex flex-col w-full p-4">
                         <p
-                            class="flex gap-2 text-sm text-black dark:text-white mb-1 items-center"
+                            class="flex gap-2 text-sm text-gray-700 dark:text-gray-200 mb-1 items-center"
                         >
                             <Earth class="w-4" />
                             Open & Extensible
@@ -111,9 +111,9 @@ import Team from "../components/team.astro";
                                     ></rect></svg
                                 >
                                 <div
-                                    class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80"
+                                    class="border-offgray-200 overflow-hidden rounded-[2px] border dark:border-gray-600/80 h-48 md:h-56"
                                 >
-                                    <img src="/clients_screen.png" alt="" />
+                                    <img class="w-full h-full object-cover" src="/clients_screen.png" alt="" />
                                 </div>
                             </div>
                             <div class="flex flex-col">
@@ -166,9 +166,9 @@ import Team from "../components/team.astro";
                                     ></rect></svg
                                 >
                                 <div
-                                    class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80"
+                                    class="border-offgray-200 overflow-hidden rounded-[2px] border dark:border-gray-600/80 h-48 md:h-56"
                                 >
-                                    <img src="/trident_hero.png" alt="" />
+                                    <img class="w-full h-full object-cover" src="/trident_hero.png" alt="" />
                                 </div>
                             </div>
                             <div class="flex flex-col">
@@ -221,9 +221,9 @@ import Team from "../components/team.astro";
                                     ></rect></svg
                                 >
                                 <div
-                                    class="md:max-h-[640px] border-offgray-200 aspect-video overflow-clip rounded-[2px] border dark:border-gray-600/80"
+                                class="border-offgray-200 overflow-hidden rounded-[2px] border dark:border-gray-600/80 h-48 md:h-56"
                                 >
-                                    <img src="/swagger.png" alt="" />
+                                    <img class="w-full h-full object-cover" src="/swagger.png" alt="" />
                                 </div>
                             </div>
                             <div class="flex flex-col">
@@ -289,13 +289,13 @@ import Team from "../components/team.astro";
         </section>
 
         <section class="-mx-3 flex items-center justify-center md:-mx-12">
-            <hr class="border-primary/50 w-full border-t" />
+            <hr class="border-primary/20 w-full border-t" />
         </section>
 
         <Separator />
 
         <section class="-mx-3 flex items-center justify-center md:-mx-12">
-            <hr class="border-primary/50 w-full border-t" />
+            <hr class="border-primary/20 w-full border-t" />
         </section>
 
         <Sponsors />
