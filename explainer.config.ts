@@ -64,7 +64,7 @@ export default defineExplainerConfig({
   navbar: [
     {
       label: "Documentation",
-      href: "/docs",
+      href: "https://docs.ferriskey.rs",
     },
     {
       label: "Modules",
