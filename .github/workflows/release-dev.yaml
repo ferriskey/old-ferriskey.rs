@@ -50,7 +50,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/ferriskey/ferriskey-website
+          images: ghcr.io/ferriskey/ferriskey-old-website
           tags: |
             type=raw,value=${{ steps.sha.outputs.short_sha }}
             type=raw,value=latest
